@@ -12,6 +12,10 @@
       <form id="login" class="input-group" [formGroup]="loginForm" (ngSubmit)="onSubmitloginForm()">
          <input type="text" class="input-field" placeholder="Email" formControlName="email" required>
          <input type="password" class="input-field" placeholder="Password" formControlName="password" required>
+         <div fxLayout="row" fxLayoutAlign="center center" style= "opacity: 0.6;">
+          <a class="Forget" routerLink="/forgot" style="color: grey;">Forgot Passowrd?</a>        
+      </div>
+
          <button type="submit" class="submit-btn">Log In</button>
          <h2><strong>OR</strong></h2>
          <!-- <span class="text">OR</span> -->

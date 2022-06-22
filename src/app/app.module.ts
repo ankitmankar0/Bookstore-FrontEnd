@@ -14,6 +14,9 @@ import {MatRadioModule} from '@angular/material/radio';
 import { MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTabsModule} from '@angular/material/tabs';
+import { HttpClientModule } from '@angular/common/http';
+import { ForgetpasswordComponent } from './components/forgetpassword/forgetpassword.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -22,7 +25,8 @@ import {MatTabsModule} from '@angular/material/tabs';
   declarations: [
     AppComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ForgetpasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,10 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatRadioModule,
     MatButtonModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatCardModule
+    
 
   ],
   providers: [],
