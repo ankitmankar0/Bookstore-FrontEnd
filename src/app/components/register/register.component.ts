@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
         FullName:this.registerForm.value.fullName,
         Email:this.registerForm.value.email,
           Password:this.registerForm.value.password,
-          MobileNumber:this.registerForm.value.phone,
+          MobileNumber:this.registerForm.value.mobileNumber,
       }
       this.user.register(data).subscribe((res:any)=>{
         console.log(res);

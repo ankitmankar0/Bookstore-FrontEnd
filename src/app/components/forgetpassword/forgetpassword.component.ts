@@ -18,7 +18,10 @@ forgotForm!: FormGroup;
   }
 
   onSubmit(){
-    
-  }
+    let data={email:this.forgotForm.value.email}
+    this.user.forgetpassword(data).subscribe((res:any)=>{
+      console.log(res);
+  })
+}
 
 }

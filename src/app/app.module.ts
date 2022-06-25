@@ -17,6 +17,10 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { HttpClientModule } from '@angular/common/http';
 import { ForgetpasswordComponent } from './components/forgetpassword/forgetpassword.component';
 import {MatCardModule} from '@angular/material/card';
+import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 
@@ -26,7 +30,9 @@ import {MatCardModule} from '@angular/material/card';
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    ForgetpasswordComponent
+    ForgetpasswordComponent,
+    ResetpasswordComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,9 @@ import {MatCardModule} from '@angular/material/card';
     MatIconModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatDividerModule,
+    MatMenuModule
     
 
   ],
