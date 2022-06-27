@@ -21,6 +21,10 @@ import { ResetpasswordComponent } from './components/resetpassword/resetpassword
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatMenuModule} from '@angular/material/menu';
+import { GetallbooksComponent } from './components/getallbooks/getallbooks.component';
+import {MatSelectModule} from '@angular/material/select';
+
+
 
 
 
@@ -32,7 +36,8 @@ import {MatMenuModule} from '@angular/material/menu';
     LoginComponent,
     ForgetpasswordComponent,
     ResetpasswordComponent,
-    DashboardComponent
+    DashboardComponent,
+    GetallbooksComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,9 @@ import {MatMenuModule} from '@angular/material/menu';
     HttpClientModule,
     MatCardModule,
     MatDividerModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule
+    
     
 
   ],
