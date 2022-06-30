@@ -5,6 +5,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ForgetpasswordComponent } from './components/forgetpassword/forgetpassword.component';
 import { GetallbooksComponent } from './components/getallbooks/getallbooks.component';
 import { LoginComponent } from './components/login/login.component';
+import { QuickviewComponent } from './components/quickview/quickview.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:'dashboard',component:DashboardComponent,
   children:[
     {path: 'GetAllbooks', component: GetallbooksComponent},
+    {path:'quickview/:bookId',component: QuickviewComponent},
   
   ],
 

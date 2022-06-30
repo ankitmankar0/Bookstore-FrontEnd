@@ -23,7 +23,9 @@ export class GetallbooksComponent implements OnInit {
     this.book.getallbooks().subscribe((res: any) => {
       console.log(res);
       this.booklist = res.response;
+      this.booksCount=res.response.length;
       console.log("BookData", this.booklist);
+      console.log("booklist length",this.booksCount);
     }),
       (error: any) => {
         console.log(error);
@@ -31,16 +33,31 @@ export class GetallbooksComponent implements OnInit {
       }
   }
 
+  quickview(book:any){
+    console.log("book id", book.bookId);
+    
+    localStorage.setItem('bookId', book.bookId);
+    this.router.navigateByUrl('dashboard/quickview/' + book.bookId)
 
-  relevence(){  
+  }
+
+
+  relevence(){  this.booklist = this.booklist.sort((x: any, y: any) => x.bookId - y.bookId);
+    this.sortBy="Sort by relevence";
   }
 
   PriceLowToHigh(){
+    this.booklist = this.booklist.sort((x: any, y: any) => x.discountPrice - y.discountPrice);
+    this.sortBy="Price -- Low to High";
   }
 
   PriceHighToLow(){ 
+    this.booklist = this.booklist.sort((x: any, y: any) => y.discountPrice - x.discountPrice);
+    this.sortBy="Price -- High to low";
   }
 
   newestFirst(){
+    this.booklist = this.booklist.sort((x: any, y: any) => y.bookId - x.bookId);
+     this.sortBy="newest First";
   }
 }

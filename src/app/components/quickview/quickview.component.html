@@ -1,0 +1,111 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+<div>
+    <div class="container" fxLayout="column" ngClass.sm="container-sm">
+        <div class="header" fxLayout="row">
+            <p routerLink="/dashboard/GetAllbooks">Home/</p><b>Book({{bookInfo?.bookQuantity}})</b>
+        </div>
+        <div class="description" fxLayout="row">
+            <div class="sampleimg" fxLayout="column">
+                <img [src]="bookInfo?.bookImage"  style="height: 42px;" alt="">
+            </div>
+            <div fxLayout="column">
+                <div class="book" fxLayout="column">
+                    <img [src]="bookInfo?.bookImage" alt="">
+                </div>
+                <div class="options" fxLayout="row"> 
+                    <div>
+                        <button id="bag" (click)="addToBag()" *ngIf="showBag">ADD TO BAG</button>
+                    </div>
+
+                    <div class="quantity"  *ngIf="showButton">
+                        <button type="button" (click)="minus()">-</button>
+                        <input type="text" [value]="cartQuantity">
+                        <button type="button" (click)="plus()">+</button>
+                    </div>
+
+                    <div (click)="addToWishlist()" routerLink="/dashboard/wishlist">
+                        <mat-icon class="wishlistIcon">favorite</mat-icon>
+                        <button id="wishlist">
+                            WISHLIST
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="book_info"  fxLayout="column">
+                <div class="book_data"  fxLayout="column">
+                    <div style="font-size: 20px; color: rgb(77, 77, 74); margin-bottom: 5px;"><b>{{bookInfo?.bookName}}</b></div>
+                    <div style="font-size: 14px; color: rgb(187, 187, 183); margin-bottom: 5px;">by {{bookInfo?.authorName}}</div>
+                    <div class="rating">
+                        <p class="p2">4.5</p>
+                        <!-- <img src="../../../assets/star_outline_white_24dp.svg" alt="" class="star"> -->
+                        <mat-icon class="star">star</mat-icon>
+                        <p class="p1">({{bookInfo?.bookQuantity}})</p>
+                    </div>
+                    <div class="cost">
+                        <p><b>Rs.{{bookInfo?.discountPrice}}</b></p>
+                        <p><s>Rs.{{bookInfo?.originalPrice}}</s></p>
+                    </div>
+                </div>
+                <hr>
+                <div fxLayout="column">
+                    <ul>
+                        <li>Book Detail</li>
+                    </ul> 
+                </div>
+                <div class="book_detail" fxLayout="column">
+                    <p>{{bookInfo?.bookDetails}}</p>
+                </div>
+                <hr>
+                <div fxLayout="column">
+                    <div class="customerfeedback">
+                        <span>Customer Feedback</span>
+                    </div>
+                    <div class="review_box">
+                        <p>Overall Rating</p>
+                        <div class="starContainer">
+                            <div class="star-widget">
+                                <input type="radio" name="rate" id="rate-5" [(ngModel)]="value" value="5">
+                                <label for="rate-5" class="fas fa-star"></label>
+
+                                <input type="radio" name="rate" id="rate-4" [(ngModel)]="value" value="4">
+                                <label for="rate-4" class="fas fa-star"></label>
+
+                                <input type="radio" name="rate" id="rate-3" [(ngModel)]="value" value="3">
+                                <label for="rate-3" class="fas fa-star"></label>
+
+                                <input type="radio" name="rate" id="rate-2" [(ngModel)]="value" value="2">
+                                <label for="rate-2" class="fas fa-star"></label>
+
+                                <input type="radio" name="rate" id="rate-1" [(ngModel)]="value" value="1">
+                                <label for="rate-1" class="fas fa-star"></label>
+                            </div> 
+
+                        </div>
+                        <div class="textarea">
+                            <textarea  [(ngModel)]="comment" cols="30" type="text" placeholder="write your review..."></textarea>
+                        </div>
+                        <div class="btn">
+                            <button type="submit" (click)="addFeedback()">Submit</button>
+                        </div>
+                    </div>
+                    <div class="feedback" *ngFor="let feedback of feedbackList">
+                        <div>
+                            <div class="feedback_name">
+                                <span style="color: black; font-size: 15px;">{{feedback?.fullName}} </span>
+                            </div>
+
+                            <div>
+                                <span>{{feedback?.rating}} </span>
+                            </div>
+
+                            <div class="feedback_comment">
+                                <span style="color: rgb(121, 119, 119); font-size: 13px;">{{feedback?.comment}} </span>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>

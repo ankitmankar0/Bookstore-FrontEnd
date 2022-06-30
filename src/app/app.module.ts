@@ -23,6 +23,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatMenuModule} from '@angular/material/menu';
 import { GetallbooksComponent } from './components/getallbooks/getallbooks.component';
 import {MatSelectModule} from '@angular/material/select';
+import { QuickviewComponent } from './components/quickview/quickview.component';
 
 
 
@@ -38,6 +39,7 @@ import {MatSelectModule} from '@angular/material/select';
     ResetpasswordComponent,
     DashboardComponent,
     GetallbooksComponent,
+    QuickviewComponent,
   ],
   imports: [
     BrowserModule,
