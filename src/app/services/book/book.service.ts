@@ -33,31 +33,62 @@ export class BookService {
         'Authorization': 'Bearer ' + this.token
       })
     }
-    return this.httpservice.postService('Feedback/Add/', reqdata, true, headerOption);
+    return this.httpservice.postService('Feedback/Add', reqdata, true, headerOption);
   }
 
-  getBookById(reqdata: any) {
-    console.log(reqdata);
-    this.token=localStorage.getItem("token")
-
-    let header = {
-      headers: new HttpHeaders({
-        
-        'Content-Type': 'application/json',
-        'Authorization' : 'Bearer '+ this.token,
-      }),
-    }; 
-    return this.httpservice.getService( `Book/GetBook?BookId=${reqdata.BookId}`, true,header );
-    
-  }
-
-  getAllFeedback(BookId:any){
-    console.log(BookId);
+  getAllFeedback(data:any){
     let header = {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
       })
     }
-    return this.httpservice.getService(`Feedback/Get/${BookId}`, false, header);
+    return this.httpservice.getService(`Feedback/Get/${data.bookId}`, false, header);
+  }
+
+  AddToCart(reqdata: any) {
+    console.log();
+    let headerOption = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json-patch+json',
+        'Authorization': 'Bearer ' + this.token
+      })
+    }
+    return this.httpservice.postService('Cart/AddBookToCart', reqdata, true, headerOption);
+  }
+
+  UpdateCart(reqdata: any) {
+    console.log();
+    let headerOption = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json-patch+json',
+        'Authorization': 'Bearer ' + this.token
+      })
+    }
+    return this.httpservice.postService('Cart/UpdateCart', reqdata, true, headerOption);
+  }
+
+  getCart() {
+
+    let headers = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.token
+      })
+    }
+    console.log(headers);
+    return this.httpservice.getService('Cart/GetAllBooksInCart', true, headers);
+  }
+
+
+  removeCart(data:any){
+    let header = {
+      headers: new HttpHeaders({
+        'Content-Type': ' application/json',
+        'Authorization': 'Bearer ' +this.token
+      })
+    }
+    console.log("reqdata")
+    return this.httpservice.deleteServices(`Cart/Delete/${data.CartId}`, true, header)
+
   }
 }

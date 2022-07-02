@@ -1,0 +1,68 @@
+<div class="main">
+    <div class="heading" fxLayout="row" fxLayoutAlign.sm="start start">
+        <span class="home" routerLink="/dashboard/GetAllbooks">Home /</span><span> My cart</span>
+    </div>
+
+    <mat-accordion multi class="example-headers-align">
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    My Cart ({{cartItems?.length}})
+                </mat-panel-title>
+                <mat-expansion-panel-header  #panelH (click)="panelH._toggle()">
+                    <mat-panel-description>
+                        <mat-form-field appearance="outline" style="margin-bottom: -15px;">
+                            <mat-label style="font-size: 13px;">Bridgelabz Solution LLP</mat-label>
+                            <mat-select>
+                                <mat-option>Bridgelabz Solution LLP</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+            </mat-expansion-panel-header>
+
+            <div *ngFor='let item of cartItems'>
+
+                <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="40px" style="padding: 15px;">
+                    <img [src]="item.bookModel.bookImage"  width="65px" height="85px" alt="">
+
+                    <div fxLayout="column" fxLayoutAlign="start start">
+                        <p style="font-weight: 500;">{{item.bookModel.bookName}}</p>
+                        <p style="color: #878787;;"> by {{item.bookModel.authorName}}</p>
+
+
+                        <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px">
+                            <span style="font-size: 12px ;color: #0A0102;">Rs.{{item.bookModel.discountPrice }}</span>
+                            <span style="font-size: 12px ;color: #878787;" *ngIf="item.bookModel.discountPrice>0"><del>Rs.{{item.bookModel.originalPrice}}</del></span>
+
+                        </div>
+
+
+                        <div fxLayout="row" fxLayoutGap="10px">
+                            <div class="quantitiy" fxLayout="row">
+                                <img class="circle" src="../../../assets/remove_circle_outline_black_24dp.svg">
+                                <div class="inputBox" fxLayoutAlign="center center">{{item.booksQty}}</div>
+                                <img class="circle"  src="../../../assets/add_circle_outline_black_24dp.svg">
+                            </div>
+
+
+                            <button (click)="myRemoveCart(item.cartId)" style="background-color: transparent;border: none;margin-left: 10px;">Remove</button>
+                        </div>
+
+
+                    </div>
+                    <span class="example-spacer"></span>
+
+
+                </div>
+                <mat-divider style="margin-top: 10px;"></mat-divider>
+            </div>
+            <button class="placeorder" style="color: white;float: right;">Place Order</button>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel  hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Customer Details
+                </mat-panel-title>
+            </mat-expansion-panel-header>

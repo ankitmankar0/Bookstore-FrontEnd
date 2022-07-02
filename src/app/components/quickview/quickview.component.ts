@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { BookService } from 'src/app/services/book/book.service';
 import { DataService } from 'src/app/services/data/data.service';
@@ -14,19 +15,22 @@ export class QuickviewComponent implements OnInit {
   showBag: boolean = true;
   BookId: any;
   bookInfo: any;
+  CartId:any;
   feedback: any;
   value: any;
   feedbackList: any;
   comment: any;
+  bookQuantity:any
 
-  constructor(private bookService: BookService, private route: ActivatedRoute) {
+  constructor(private bookService: BookService,private snackBar:MatSnackBar, private route: ActivatedRoute, private data:DataService) {
 
   }
 
   ngOnInit(): void {
     //this.quickView();
-    this.getBookDetail();
+  
     this.BookId = localStorage.getItem('bookId')
+    this.getBookDetail();
 
   }
 
@@ -35,8 +39,9 @@ export class QuickviewComponent implements OnInit {
       res.response.forEach((element:any) => {
         if(element.bookId == this.BookId){
           this.bookInfo = element;
-          console.log("boofInfo", this.bookInfo);
+          
           this.getAllFeedback();
+          console.log("boofInfo", this.bookInfo);
         }  
       });
     }, error=>{
@@ -49,26 +54,68 @@ export class QuickviewComponent implements OnInit {
     let reqdata = {
       rating: this.value,
       comment: this.comment,
-      bookId: this.bookInfo.BookId
+      bookId: this.BookId
     }
     this.bookService.AddFeddback(reqdata).subscribe((response:any)=>{
       console.log("Feedback submitted successful", response);
+      this.snackBar.open('Feedback submitted successfully', '', {
+        duration:2000,
+       }); 
       this.getAllFeedback();
     })
   }
 
   getAllFeedback(){
-    console.log(this.BookId)
-    this.bookService.getAllFeedback(this.BookId).subscribe((res:any)=>{
+    let data ={
+      bookId: this.BookId
+    }
+    console.log(data)
+    this.bookService.getAllFeedback(data).subscribe((res:any)=>{
       console.log("get feedback list",res);
       this.feedbackList = res.response;
       console.log(this.feedbackList);
+      console.log(data)
     })
   }
 
+  addToCart() {
+    this.cartQuantity++;
+    let reqdata ={
+      bookId: this.BookId,
+      booksQty: this.bookQuantity
+    }
+    this.showButton=true;
+    this.showBag=false;
+    this.bookService.AddToCart(reqdata).subscribe((res:any)=>{
+      console.log('cart Item Fetched', res)
+    }),
+    (    error: any)=>{
+      console.log(error);
+    }
+   }
+
+  plus() {
+    this.cartQuantity++
+    let readata ={
+      bookId:this.BookId,
+      bookQty: this.bookQuantity
+    }
+    this.bookService.AddToCart(readata).subscribe((res:any)=>{
+      console.log("cart items fdetch", res);
+    })
+   }
+  minus() {
+    this.cartQuantity--
+    let readata ={
+      cartId:this.CartId,
+      bookQty: this.bookQuantity
+    }
+    this.bookService.AddToCart(readata).subscribe((res:any)=>{
+      console.log("cart items fdetch", res);
+    })
+   }
+
   addToWishlist() { }
-  plus() { }
-  minus() { }
-  addToBag() { }
-  addToCart() { }
+
+  
 }

@@ -24,6 +24,13 @@ import {MatMenuModule} from '@angular/material/menu';
 import { GetallbooksComponent } from './components/getallbooks/getallbooks.component';
 import {MatSelectModule} from '@angular/material/select';
 import { QuickviewComponent } from './components/quickview/quickview.component';
+import { CartComponent } from './components/cart/cart.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { AuthguardService } from './services/authService/authguard.service';
+import {Routes, RouterModule } from '@angular/router';
+
+
 
 
 
@@ -40,6 +47,7 @@ import { QuickviewComponent } from './components/quickview/quickview.component';
     DashboardComponent,
     GetallbooksComponent,
     QuickviewComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,12 +66,18 @@ import { QuickviewComponent } from './components/quickview/quickview.component';
     MatCardModule,
     MatDividerModule,
     MatMenuModule,
-    MatSelectModule
+    MatSelectModule,
+    MatExpansionModule,
+    MatSnackBarModule,
+    RouterModule,
+
     
     
 
   ],
-  providers: [],
+  providers: [
+    AuthguardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

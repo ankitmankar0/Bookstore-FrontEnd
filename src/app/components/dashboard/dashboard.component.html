@@ -5,15 +5,16 @@
             <a id="move" style="color: white; padding-top: 1.7%; "><img src="../../../assets/BookCover.png" /></a>
         </div>
         <div>
-            <a style="color: white; font-size: large; padding-top: 1.7%; padding-left: 8%;">BookStore</a></div>
-        
+            <a style="color: white; font-size: large; padding-top: 1.7%; padding-left: 8%;">BookStore</a>
+        </div>
+
         <mat-card class="search-mat-card" fxLayout="row" fxLayoutAlign="space-around center">
             <button mat-icon-button>
                 <mat-icon class="searchIcon">search</mat-icon>
             </button>
             <input class="searchInput" type="text" name="search" placeholder="Search.." />
         </mat-card>
-        <button class="cart" mat-icon-button matTooltip="Cart">Cart<mat-icon>
+        <button class="cart" (click)="getcart()" mat-icon-button matTooltip="Cart">Cart<mat-icon>
                 shopping_cart</mat-icon>
         </button>
         <button class="Menu" class="pro" mat-button [matMenuTriggerFor]="menu">Profile
@@ -24,7 +25,7 @@
             <p>To access account and manage orders</p>
             <button mat-menu-item>
                 <div style="text-align:center">
-                    <button mat-button class="login">LOGIN/SIGNUP</button>
+                    <button mat-button class="login" (click)="Logout()">LOGIN/SIGNUP</button>
                 </div>
             </button>
 

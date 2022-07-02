@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
 
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
 
 loginForm!:FormGroup
 token:any
-  constructor(private formbuilder: FormBuilder, private user:UserService, private router:Router) { 
+  constructor(private formbuilder: FormBuilder, private user:UserService, private router:Router, private snackbar: MatSnackBar) { 
     this.token = localStorage.getItem("token");
   }
 
@@ -35,6 +36,9 @@ token:any
         console.log(res);
         localStorage.setItem("token", res.data.token);
         this.router.navigateByUrl("/dashboard/GetAllbooks");
+        this.snackbar.open('Login successfully', '', {
+          duration:2000,
+         }); 
        
       })
   }
