@@ -20,6 +20,10 @@ export class DashboardComponent implements OnInit {
     localStorage.clear();
     this.route.navigateByUrl('/login')
   }
+
+  wishlist() {
+    this.route.navigateByUrl("/dashboard/wish")
+  }
   
   getcart()
   {

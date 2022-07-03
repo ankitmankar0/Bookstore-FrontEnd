@@ -29,6 +29,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AuthguardService } from './services/authService/authguard.service';
 import {Routes, RouterModule } from '@angular/router';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { OrderComponent } from './order/order.component';
 
 
 
@@ -48,6 +50,8 @@ import {Routes, RouterModule } from '@angular/router';
     GetallbooksComponent,
     QuickviewComponent,
     CartComponent,
+    WishlistComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,

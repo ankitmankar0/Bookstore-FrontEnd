@@ -115,7 +115,23 @@ export class QuickviewComponent implements OnInit {
     })
    }
 
-  addToWishlist() { }
+  
+
+  addToWishlist() {
+    let data = {
+      bookId: this.BookId,
+     
+    }
+    this.bookService.addwishlist(data).subscribe(
+      (response: any) => {
+        console.log('Add to wishlist', response);
+        
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
 
   
 }

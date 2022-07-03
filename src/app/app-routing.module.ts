@@ -9,6 +9,8 @@ import { LoginComponent } from './components/login/login.component';
 import { QuickviewComponent } from './components/quickview/quickview.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { OrderComponent } from './order/order.component';
 import { AuthguardService } from './services/authService/authguard.service';
 
 
@@ -23,6 +25,8 @@ const routes: Routes = [
     {path: 'GetAllbooks', component: GetallbooksComponent},
     {path:'quickview/:bookId',component: QuickviewComponent},
     {path:'cart',component:CartComponent},
+    {path:'wish', component:WishlistComponent},
+    {path:'order', component:OrderComponent},
   
   ],
 
